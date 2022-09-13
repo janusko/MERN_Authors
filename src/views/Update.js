@@ -21,13 +21,15 @@ const Update = (props) => {
     
     const updateAuthor = (author) => {
         axios.put('http://localhost:8000/api/author/' + id, author)
-            .then(res => console.log(res))
-        navigate('/')
+            .then(res => {
+                console.log(res)
+                navigate('/')
+    })
     }
 
     return (
         <div>
-            <h1>Update a Author</h1>
+            <h1>Update an Author</h1>
             { loaded && (
                 <>
                     <AuthorForm
@@ -37,7 +39,7 @@ const Update = (props) => {
                         errorFromProp={errors}
                         // initial from author form
                     />
-                    <DeleteButton authorId={author._id} />
+                    <DeleteButton authorId={author._id} onDeleteProp={() => navigate('/')}/>
                 </>
             )}
         </div>

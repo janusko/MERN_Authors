@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom'
 
-export default (props) => {
+const AuthorForm = (props) => {
     const { initialName, onSubmitProp, errorFromProp } = props;
     const [name, setName] = useState(initialName);
 
@@ -22,3 +22,5 @@ export default (props) => {
         </form>
     )
 }
+
+export default AuthorForm;

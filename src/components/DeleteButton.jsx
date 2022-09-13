@@ -1,23 +1,24 @@
 import React from 'react'
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom'
+import styles from '../modules/buttons.module.css'
     
-export default props => {
+const DeleteButton = (props) => {
     
-    const { authorId } = props;
-    const navigate = useNavigate();
+    const { authorId, onDeleteProp } = props;
     
-    const deleteAuthor = e => {
+    const deleteAuthor = (e) => {
         axios.delete('http://localhost:8000/api/author/' + authorId)
             .then(res=>{
                 console.log(res);
-                navigate('/')
+                onDeleteProp(authorId);
             })
     }
     
     return (
-        <button onClick={deleteAuthor}>
+        <button className={styles.btn} onClick={deleteAuthor}>
             Delete
         </button>
     )
 }
+
+export default DeleteButton;
